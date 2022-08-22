@@ -26,7 +26,7 @@ class RFIDController:
             
             for card_id in cards.read():
                 
-                ids.append(str(card_id))
+                ids.append(int(card_id))
                 
         return ids
     

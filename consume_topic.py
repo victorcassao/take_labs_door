@@ -18,7 +18,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, message, gpio_controller=gpio_control):
     
-    msg_rcv = message.payload
+    msg_rcv = message.payload.decode('utf-8')
     topic_rcv = message.topic
     
     print("Message received")
