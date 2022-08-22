@@ -1,6 +1,6 @@
 from mfrc522 import SimpleMFRC522
 
-PATH_CARDS_DB = "rfid_module/cards.txt"
+PATH_CARDS_DB = "/home/pi/take_labs_door/rfid_module/cards.txt"
 
 class RFIDController:
     
