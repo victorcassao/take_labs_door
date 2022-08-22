@@ -6,8 +6,6 @@ HOST = "localhost"
 PORT = 1883
 TOPIC = "TAKE_LABS_DOOR"
 
-gpio_control = GPIOController()
-
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
 
@@ -16,16 +14,19 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(TOPIC)
 
 
-def on_message(client, userdata, message, gpio_controller=gpio_control):
+def on_message(client, userdata, message):
     
     msg_rcv = message.payload.decode('utf-8')
     topic_rcv = message.topic
+    
+    gpio_control = GPIOController()
     
     print("Message received")
     print(msg_rcv)
     
     if topic_rcv == TOPIC:
         if "OPEN" in msg_rcv:
+            print("openning...")
             gpio_control.open_door()
         elif "REFUSED" in msg_rcv:
             pass
