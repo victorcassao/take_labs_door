@@ -24,8 +24,7 @@ class RFIDController:
         
         with open(PATH_CARDS_DB, 'r') as cards:
             
-            for card_id in cards.read():
-                
+            for card_id in cards:
                 if str(id) in card_id:
                     return True
                         
