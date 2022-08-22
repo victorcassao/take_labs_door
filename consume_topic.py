@@ -22,6 +22,7 @@ def on_message(client, userdata, message, gpio_controller=gpio_control):
     topic_rcv = message.topic
     
     print("Message received")
+    print(msg_rcv)
     
     if topic_rcv == TOPIC:
         if "OPEN" in msg_rcv:
