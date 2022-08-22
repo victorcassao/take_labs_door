@@ -24,8 +24,10 @@ def on_message(client, userdata, message, gpio_controller=gpio_control):
     print("Message received")
     
     if topic_rcv == TOPIC:
-        print(msg_rcv)
-
+        if "OPEN" in msg_rcv:
+            gpio_control.open_door()
+        elif "REFUSED" in msg_rcv:
+            pass
 
 broker_address = "localhost"  # Broker address
 port = 1883  # Broker port

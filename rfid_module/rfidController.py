@@ -32,7 +32,7 @@ class RFIDController:
     
     def read(self):
         
-        id, text = self.reader.read()
+        id = self.reader.read_id()
         
-        return id, text
+        return id
         

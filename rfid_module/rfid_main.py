@@ -15,7 +15,7 @@ while True:
         
         print("Iniciado...")
         time.sleep(0.05)
-        id, text = rfid.read()
+        id = rfid.read()
         print(id)
         
         if rfid.hasAccess(id):
