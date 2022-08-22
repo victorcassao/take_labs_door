@@ -11,24 +11,25 @@ class RFIDController:
     
     def hasAccess(self, id):
         
-        authorized_id = self.__getAuthorizedIds()
+        authorized_id = self.__getAuthorizedIds(id)
         
-        if id in authorized_id:
+        if authorized_id:
             return True
         else:
             return False
         
-    def __getAuthorizedIds(self):
+    def __getAuthorizedIds(self, id):
         
-        ids = []
+        # ids = []
         
         with open(PATH_CARDS_DB, 'r') as cards:
             
             for card_id in cards.read():
                 
-                ids.append(int(card_id))
-                
-        return ids
+                if str(id) in card_id:
+                    return True
+                        
+        return False
     
     def read(self):
         
