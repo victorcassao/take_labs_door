@@ -1,4 +1,4 @@
-from GPIOController import GPIOController
+from GPIOController import openDoor
 import paho.mqtt.client as mqtt
 import time
 
@@ -19,15 +19,13 @@ def on_message(client, userdata, message):
     msg_rcv = message.payload.decode('utf-8')
     topic_rcv = message.topic
     
-    gpio_control = GPIOController()
-    
     print("Message received")
     print(msg_rcv)
     
     if topic_rcv == TOPIC:
         if "OPEN" in msg_rcv:
             print("openning...")
-            gpio_control.open_door()
+            openDoor()
         elif "REFUSED" in msg_rcv:
             pass
 
